@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Organize receitas, despesas e descubra quanto realmente sobra trabalhando com aplicativos de transporte.">
+<title>DRIVER FINANCE | Controle financeiro para motoristas</title>
+<style>
+:root{--bg:#080d12;--panel:#101a22;--panel2:#14232a;--green:#39e58c;--green2:#1dbb70;--text:#f4f8f6;--muted:#a8b8b1;--line:#263a36}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% 0%,#123329 0,transparent 36%),var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}.nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}.brand{font-weight:900;letter-spacing:.08em}.brand span{color:var(--green)}.nav small{color:var(--muted)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center;padding:66px 0 82px}.eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--green);font-weight:800;font-size:12px;letter-spacing:.13em;text-transform:uppercase}.dot{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 15px var(--green)}h1{font-size:clamp(38px,5.4vw,66px);line-height:1.03;letter-spacing:-.045em;margin:18px 0}h1 em{font-style:normal;color:var(--green)}.lead{font-size:18px;color:var(--muted);max-width:590px}.actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:28px}.btn{display:inline-block;background:var(--green);color:#052014;padding:15px 23px;border-radius:12px;font-weight:900;box-shadow:0 10px 32px #39e58c25}.btn:hover{background:#69f3aa;transform:translateY(-1px)}.subnote{color:var(--muted);font-size:13px}
+.mock{background:linear-gradient(145deg,#172a2c,#0e171e);border:1px solid #315047;border-radius:24px;padding:20px;box-shadow:0 30px 90px #0008;transform:rotate(1deg)}.mocktop{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}.mock h3{margin:18px 0 4px;font-size:14px}.balance{font-size:34px;font-weight:900;color:var(--green)}.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.stat{background:#0b1419;border:1px solid var(--line);border-radius:14px;padding:14px}.stat small{display:block;color:var(--muted)}.stat strong{font-size:19px}.bars{height:100px;display:flex;gap:9px;align-items:end;padding:16px 8px 0}.bars i{display:block;flex:1;background:linear-gradient(var(--green),#168f5c);border-radius:6px 6px 2px 2px;opacity:.9}.bars i:nth-child(1){height:35%}.bars i:nth-child(2){height:65%}.bars i:nth-child(3){height:48%}.bars i:nth-child(4){height:82%}.bars i:nth-child(5){height:58%}.bars i:nth-child(6){height:95%}
+section{padding:68px 0}.section-head{text-align:center;max-width:720px;margin:0 auto 34px}.section-head h2{font-size:clamp(28px,4vw,42px);line-height:1.12;margin:12px 0}.section-head p{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}.ico{width:42px;height:42px;border-radius:12px;background:#153c2b;color:var(--green);display:grid;place-items:center;font-size:21px}.card h3{margin:15px 0 6px}.card p{color:var(--muted);margin:0;font-size:14px}.band{background:linear-gradient(110deg,#10251e,#101a22);border-block:1px solid var(--line)}.two{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}.two h2{font-size:clamp(28px,4vw,42px);line-height:1.1}.checks{padding:0;list-style:none}.checks li{padding:9px 0;color:var(--muted)}.checks li:before{content:"✓";color:var(--green);font-weight:900;margin-right:12px}.price{max-width:540px;margin:auto;text-align:center;background:linear-gradient(145deg,#13251f,#101a22);border:1px solid #35614d;border-radius:24px;padding:34px}.price .amount{font-size:54px;line-height:1.1;font-weight:950;color:var(--green);margin:10px 0}.price p{color:var(--muted)}.price .btn{display:block;margin-top:22px}.faq{max-width:800px;margin:auto}.faq details{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px 20px;margin:10px 0}.faq summary{font-weight:800;cursor:pointer}.faq p{color:var(--muted);margin-bottom:0}footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+@media(max-width:780px){.hero,.two{grid-template-columns:1fr}.hero{padding:38px 0 55px;gap:30px}.grid{grid-template-columns:1fr 1fr}.mock{transform:none}section{padding:52px 0}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.nav small{display:none}.actions .btn{width:100%;text-align:center}.price{padding:26px 20px}}
+
+/* Animações suaves */
+@keyframes riseIn {from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glowPulse {0%,100%{box-shadow:0 0 0 rgba(57,229,140,0)}50%{box-shadow:0 0 34px rgba(57,229,140,.18)}}
+@keyframes drift {0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.mock{animation:drift 6s ease-in-out infinite,glowPulse 5s ease-in-out infinite}
+.btn{transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
+.product-shot{background:#0d151d;border:1px solid #315047;border-radius:20px;padding:10px;box-shadow:0 24px 70px #0009;overflow:hidden}
+.product-shot img{display:block;width:100%;height:auto;border-radius:12px}
+.product-shot figcaption{padding:12px 8px 5px;color:var(--muted);font-size:13px}
+.promo-banner{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 60px #0007}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+</style>
+</head>
+<body>
+<header class="wrap nav"><a class="brand" href="#">DRIVER <span>FINANCE</span></a><small>Gestão financeira para motoristas</small></header>
+<main>
+<section class="wrap hero">
+<div><div class="eyebrow"><span class="dot"></span> Mais controle em cada quilômetro</div>
+<h1>Você sabe quanto realmente <em>ganha</em> dirigindo?</h1>
+<p class="lead">Organize seus ganhos e gastos com Uber, 99 e outros aplicativos. Tenha uma visão mais clara do seu lucro e tome decisões melhores para o seu trabalho.</p>
+<div class="actions"><a class="btn" href="#comprar">QUERO ORGANIZAR MINHAS FINANÇAS</a><span class="subnote">Pagamento único • Sem mensalidade</span></div>
+</div>
+<div class="mock" aria-label="Ilustração de painel financeiro"><div class="mocktop"><b>DRIVER FINANCE</b><span>VISÃO GERAL</span></div><h3>Saldo do período</h3><div class="balance">R$ 3.480,00</div><div class="stats"><div class="stat"><small>Receitas</small><strong>R$ 5.200</strong></div><div class="stat"><small>Despesas</small><strong>R$ 1.720</strong></div></div><h3>Desempenho financeiro</h3><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="mocktop"><span>Semana 1</span><span>Semana 6</span></div></div>
+</section>
+
+<section class="wrap" id="demonstracao">
+  <div class="section-head reveal">
+    <div class="eyebrow">Veja o sistema por dentro</div>
+    <h2>Uma visão real do DRIVER FINANCE</h2>
+    <p>Esta é uma captura de tela do painel do produto — não apenas uma imagem ilustrativa.</p>
+  </div>
+  <figure class="product-shot reveal">
+    <img src="assets/driver-finance-dashboard-real.png" alt="Captura real do painel DRIVER FINANCE com receitas, despesas, lucro, rendimento e calculadora de combustível" loading="lazy">
+    <figcaption>Painel real do DRIVER FINANCE • Gestão financeira para motoristas</figcaption>
+  </figure>
+  <div style="height:22px"></div>
+  <img class="promo-banner reveal" src="assets/driver-finance-banner.png" alt="Arte promocional do DRIVER FINANCE" loading="lazy">
+</section>
+
+<section class="band"><div class="wrap"><div class="section-head"><div class="eyebrow">Tudo mais organizado</div><h2>Chega de adivinhar para onde vai seu dinheiro.</h2><p>Registre o que entra e o que sai e acompanhe seus números em um só lugar.</p></div>
+<div class="grid">
+<div class="card"><div class="ico">↗</div><h3>Controle de receitas</h3><p>Registre ganhos de Uber, 99, corridas particulares e outras fontes.</p></div>
+<div class="card"><div class="ico">▤</div><h3>Controle de despesas</h3><p>Acompanhe combustível, manutenção, alimentação e outros custos.</p></div>
+<div class="card"><div class="ico">◎</div><h3>Lucro mais claro</h3><p>Compare receitas e despesas para entender quanto sobra no período.</p></div>
+<div class="card"><div class="ico">⛽</div><h3>Calculadora de combustível</h3><p>Estime consumo, litros utilizados e custo por quilômetro rodado.</p></div>
+<div class="card"><div class="ico">▥</div><h3>Dashboard e gráficos</h3><p>Visualize seus resultados e a distribuição dos gastos.</p></div>
+<div class="card"><div class="ico">⚑</div><h3>Metas financeiras</h3><p>Defina objetivos e acompanhe seu progresso ao longo do mês.</p></div>
+</div></div></section>
+<section class="wrap two"><div><div class="eyebrow">Feito para a rotina de quem dirige</div><h2>Seu trabalho tem custos. Seu controle também precisa ter.</h2><p class="lead">O DRIVER FINANCE ajuda você a enxergar melhor o resultado do seu esforço, sem confundir faturamento com lucro.</p></div><ul class="checks"><li>Para motoristas de Uber e 99</li><li>Para quem trabalha com outros aplicativos</li><li>Para quem quer organizar entradas e saídas</li><li>Para quem deseja acompanhar metas e desempenho</li></ul></section>
+<section class="band" id="comprar"><div class="wrap"><div class="price"><div class="eyebrow">Oferta de lançamento</div><h2>Comece a cuidar melhor do seu dinheiro</h2><div class="amount">R$ 29,90</div><p>Pagamento único. Sem cobrança mensal.</p><a class="btn" href="https://pay.kiwify.com.br/6tal8AE">QUERO COMPRAR AGORA</a><p class="subnote">Após a confirmação do pagamento, o acesso será disponibilizado conforme as instruções de entrega do produto na Kiwify.</p></div></div></section>
+<section class="wrap"><div class="section-head"><div class="eyebrow">Dúvidas frequentes</div><h2>Perguntas frequentes</h2></div><div class="faq">
+<details><summary>O DRIVER FINANCE é para quem?</summary><p>Para motoristas de aplicativos, como Uber, 99 e outros, que desejam organizar receitas e despesas.</p></details>
+<details><summary>Tem mensalidade?</summary><p>A oferta apresentada é de pagamento único, sem mensalidade. Consulte as condições de acesso informadas no checkout.</p></details>
+<details><summary>O sistema garante aumento dos meus ganhos?</summary><p>Não. O DRIVER FINANCE é uma ferramenta de organização e acompanhamento financeiro. Os resultados dependem dos seus registros e da sua atividade.</p></details>
+<details><summary>Como recebo o acesso?</summary><p>O acesso será entregue pelas instruções configuradas pelo vendedor na Kiwify após a confirmação do pagamento.</p></details>
+</div></section>
+</main>
+<footer><div class="wrap foot"><b>DRIVER <span style="color:var(--green)">FINANCE</span></b><span>Organização financeira para quem vive na direção.</span><span>© 2026 DRIVER FINANCE</span></div></footer>
+
+<script>
+document.documentElement.classList.add('js-ready');
+const revealItems = document.querySelectorAll('.hero > div, .section-head, .card, .two > *, .product-shot, .promo-banner, .price, .faq details');
+revealItems.forEach(el => el.classList.add('reveal'));
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); obs.unobserve(entry.target); } });
+  }, {threshold: 0.12});
+  revealItems.forEach(el => observer.observe(el));
+} else {
+  revealItems.forEach(el => el.classList.add('visible'));
+}
+</script>
+
+</body></html>
